@@ -1,9 +1,11 @@
 #include <unistd.h>
 /**
- * main - A c program that prints a line to that standard error
+ * main - The c programming that prints a line to the standard errors
+ * code by Mntesnot
  * Return: 1 (Success)
  */
 int main(void)
+{
 write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
 return (1);
 }
