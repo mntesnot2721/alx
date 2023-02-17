@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <ctype.h>
 /**
-*main - Prints all single digits of base 16 followed by new line
-*
-*Return: returns 0
+* main - Prints all single digits of base 16 followed by new line
+* code by Mntesnot
+* Return: returns 0
 */
 int main(void)
 {
@@ -24,4 +24,4 @@ int main(void)
 	}
 	putchar('\n');
 	return (0);
-}	
+}
