@@ -15,7 +15,7 @@ int main(void)
 	char r3[11];
 	char *res;
 
-	res = infinite_add (n, m, r, 100);
+	res = infinite_add(n, m, r, 100);
 	if (res == 0)
 	{
 	printf("Error\n");
@@ -26,7 +26,7 @@ int main(void)
 	}
 	n = "1234567890";
 	m = "1";
-	res = infinite_add (n, m, r2, 10);
+	res = infinite_add(n, m, r2, 10);
 	if (res == 0)
 	{
 	printf("Error\n");
@@ -37,7 +37,7 @@ int main(void)
 	}
 	n = "999999999";
 	m = "1";
-	res = infinite_add (n, m, r2, 10);
+	res = infinite_add(n, m, r2, 10);
 	if (res == 0)
 	{
 	printf("Error\n");
@@ -46,7 +46,7 @@ int main(void)
 	{
 	printf("%s + %s = %s\n", n, m, res);
 	}
-	res = infinite_add (n, m, r3, 11);
+	res = infinite_add(n, m, r3, 11);
 	if (res == 0)
 	{
 	printf("Error\n");
@@ -57,4 +57,3 @@ int main(void)
 	}
 	return (0);
 }
-
