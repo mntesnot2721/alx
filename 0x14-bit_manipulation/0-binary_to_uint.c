@@ -1,32 +1,34 @@
-#include "lists.h"
+#include "main.h"
 
 /**
- * print_listint - a function that prints all elements of a list
- *
- * @h: pointer to first node
- *
- * Return: the number of nodes
-*/
-size_t print_listint(const listint_t *h)
+ * binary_to_uint- convert binary to unsigned int
+ * @b: binary
+ * Return: unsigned int
+ */
+
+unsigned int binary_to_uint(const char *b)
 {
-	size_t node_count = 1;
 
-	/* return 0 as no of nodes when h is null*/
-	if (h == NULL)
-		return (0);
+	int night = 0, j;
+	unsigned int number = 0, non_binary = 0;
 
-	while (h->next != NULL)
+	if (b == NULL)
+		return (non_binary);
+
+	while (b[night] != '\0')
+		night++;
+	night -= 1;
+	j = 0;
+	while (b[j])
 	{
-		printf("%d\n", h->n);
+		if ((b[j] != '0') && (b[j] != '1')) /*&& logical AND operator*/
+			return (non_binary);
 
-		/*go to the next node*/
-		h = h->next;
-		/*count no of nodes*/
-		node_count++;
+		if (b[j] == '1')
+			number += (1 * (1 << night)); /*<< bitwise left shift operator*/
+		j++;
+
+		night--;
 	}
-
-	/*print last node*/
-	printf("%d\n", h->n);
-
-	return (node_count);
+	return (number);
 }
