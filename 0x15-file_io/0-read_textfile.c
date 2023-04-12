@@ -1,68 +1,53 @@
-
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@mntesnot443 
-abela12
-/
-alx-low_level_programming
-Public
-Fork your own copy of abela12/alx-low_level_programming
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-alx-low_level_programming/0x15-file_io/0-read_textfile.c
-@abela12
-abela12 0x15. C - File I/O - Added
-Latest commit 228021f on May 2, 2022
- History
- 1 contributor
-37 lines (37 sloc)  707 Bytes
- 
-
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
 #include "main.h"
+
 /**
- * read_textfile - reads a text file and prints it to the standard output
- * @filename: name of the file to be read
- * @letters: number of letters to read and print
- * Return: the number of letters printed, or 0 if it failed
+ * read_textfile - reads and prints from a file
+ * @filename: path to file
+ * @letters: chars to read
+ * Return: chars read
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	int i, y;
-	char *buf;
+	char *buff;
+	ssize_t bytes, r;
+
 	if (!filename)
 		return (0);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	buf = malloc(sizeof(char) * letters);
-	if (!buf)
-		return (0);
-	i = read(fd, buf, letters);
-	if (i < 0)
+	if (fd == -1)
 	{
-		free(buf);
+		close(fd);
 		return (0);
 	}
-	buf[i] = '\0';
-	close(fd);
-	y = write(STDOUT_FILENO, buf, i);
-	if (y < 0)
-	{
-		free(buf);
-		return (0);
-	}
-	free(buf);
-	return (y);
-}
 
+	buff = malloc(sizeof(char) * letters);
+	if (!buff)
+	{
+		close(fd);
+		return (0);
+	}
+
+	bytes = read(fd, buff, letters);
+
+	if (bytes == -1)
+	{
+		close(fd);
+		free(buff);
+		return (0);
+	}
+
+	r = write(STDOUT_FILENO, buff, bytes);
+
+	if (r == -1)
+	{
+		close(fd);
+		free(buff);
+		return (0);
+	}
+	close(fd);
+	return (bytes);
+}
